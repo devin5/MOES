@@ -34,7 +34,7 @@ const flower = [
     sativa: "50%",
     indica: "50%",
     strainDesc: "80% Indica/20% Sativa",
-    src: "/cherry.png",
+    src: "/cherry.jpg",
     price: "$35.00",
     thc: "19.00%",
     cbd: "23.95%",
