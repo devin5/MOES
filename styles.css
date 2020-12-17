@@ -1,0 +1,176 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: 'Sunnyside Gotham', sans-serif, Helvetica;
+}
+.logo{
+    width: 70px;
+    
+}
+.banner{
+    padding: 0 20px 0 10px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.3999999999999998rem;
+    font-family: 'Sunnyside Gotham', sans-serif, Helvetica;
+    color: rgb(55, 124, 32);
+    font-weight: 700;
+}
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100px;
+  padding: 55px 0 55px 0;
+  background-color: #5b5d62a1;
+}
+
+@-webkit-keyframes pulse {
+    25% {
+      -webkit-transform: scale(1.1);
+      transform: scale(1.1);
+    }
+    75% {
+      -webkit-transform: scale(0.9);
+      transform: scale(0.9);
+    }
+  }
+  @keyframes pulse {
+    25% {
+      -webkit-transform: scale(1.1);
+      transform: scale(1.1);
+    }
+    75% {
+      -webkit-transform: scale(0.9);
+      transform: scale(0.9);
+    }
+  }
+
+.menu-item {
+    border-radius: 5%;
+    background-color: #5b5d62a1;
+    background: #FFF;
+    width: 170px;
+    height: 100px;
+    color: #5B5D62;
+    font-size: 1.3999999999999998rem;
+    font-family: 'Sunnyside Gotham', sans-serif, Helvetica;
+    font-weight: 400;
+    line-height: 1.43;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+
+.menu-item:hover, .menu-item:focus, .menu-item:active {
+    background-color: #4ce48be1;
+    color: white;
+    transition: .5s;
+    -webkit-animation-name: pulse;
+    animation-name: pulse;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+  }
+
+
+.content{
+    display: flex;
+    padding: 50px 100px 0 100px;
+    height: 100%;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+  .product-item{
+    background-color: #7d808836;
+    width: 270px;
+    height: 350px;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    /* 
+    justify-content: space-around;
+    align-items: center; */
+ 
+  }
+
+  .product-image{
+      padding: 12px 0 0 0 ;
+      width: 240px;
+      height: 200px;
+      /* margin-left: 14px */
+  }
+
+  .nameP{
+      padding-top: 8px;
+    font-size: 1.1999999999999998rem;
+    font-weight: 400;
+    font-family: 'Sunnyside Gotham', sans-serif, Helvetica;
+  }
+  .main-price-div{
+      display: flex;
+      padding-top: 8px;
+  }
+
+  .dynamic-price{
+padding-left: 4px;
+font-weight: 700;
+  }
+
+
+  .unit-price{
+color: rgb(150, 144, 144);
+}
+
+.info-div{
+    display: flex;
+    width: 100%;
+    height: 40px;
+
+    padding-top: 10px;
+}
+
+/* infoTypeP.className = "info-type"
+infoAmountP.className = "info-ammont" */
+.info-contain{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    color: rgb(150, 144, 144);
+    border: 2px solid rgb(150, 144, 144);
+}
+.info-contain:nth-child(2){
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    color: rgb(150, 144, 144);
+    border-left: 0px solid rgb(90, 3, 3);
+}
+.info-contain:nth-child(3){
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    color: rgb(150, 144, 144);
+    border-left: 0px solid rgb(90, 3, 3);
+    border-right: 0px solid rgb(90, 3, 3);
+}
+
+.strain-div{
+width: 100%;
+text-align: center;
+padding: 5px 0  5px 0;
+}
