@@ -58,38 +58,59 @@ const cart = [
       strain: "Sativa",
       src: "/image4.jpg",
       price: "$40.00",
-      thc: "87.7",
+      thc: "89.72%",
       cbd: "N/A",
       sativa: "N/A",
       indica: "N/A",
     },
     {
-      type: "PineApple express",
-      strain: "Indica",
-      src: "/cart.jpg",
-      price: "$45.00",
-      thc: "53.73%",
-      cbd: "5.32%",
-      sativa: "N/A",
-      indica: "N/A",
-    },
-    {
-      type: "Mamas Dil Do",
-      strain: "Sativa",
-      src: "/cart.jpg",
-      price: "$35.00",
-      thc: "53.73%",
-      cbd: "5.32%",
-      sativa: "N/A",
-      indica: "N/A",
-    },
-    {
-      type: "Where's my car",
+      type: "Gorrilla Glue #4 CurePen",
       strain: "Hybrid",
-      src: "/cart.jpg",
-      price: "$25.00",
-      thc: "53.73%",
-      cbd: "5.32%",
+      src: "/gor.jpg",
+      price: "$40.00",
+      thc: "87.18%",
+      cbd: "N/A",
+      sativa: "N/A",
+      indica: "N/A",
+    },
+    {
+      type: "Foreign Glue CurePen",
+      strain: "Hybrid",
+      src: "/for.jpg",
+      price: "$40.00",
+      thc: "91.02%",
+      cbd: "N/A",
+      sativa: "N/A",
+      indica: "N/A",
+    },
+    {
+      type: "Strawberry Bannana CurePen",
+      strain: "Indica",
+      src: "/straw.jpg",
+      price: "$40.00",
+      thc: "86.15%",
+      cbd: "N/A",
+      sativa: "N/A",
+      indica: "N/A",
+    },
+    ,
+    {
+      type: "Watermelon Sorbet CurePen",
+      strain: "Sativa",
+      src: "/water.jpg",
+      price: "$40.00",
+      thc: "92.76%",
+      cbd: "N/A",
+      sativa: "N/A",
+      indica: "N/A",
+    },
+    {
+      type: "Train Wreck CurePen",
+      strain: "Sativa",
+      src: "/train.jpg",
+      price: "$40.00",
+      thc: "91.32%",
+      cbd: "N/A",
       sativa: "N/A",
       indica: "N/A",
     },
@@ -108,7 +129,8 @@ const roll = [
     },
    
   ];
-
+const conc = []
+const edible = []
 
 let Page = "Flower"
 
@@ -132,9 +154,15 @@ function createNavItem(navItemsArr) {
         else if(Page === "Carts"){
             CreateBoxes(cart);
         }
-        else if(Page === "Pre-Rolls"){
-            CreateBoxes(roll);
+        else if(Page === "Concentrates"){
+            CreateBoxes(conc);
         }
+        else if(Page === "Pre-Rolls"){
+          CreateBoxes(roll);
+      }
+      else if(Page === "Edibles"){
+        CreateBoxes(edible);
+    }
         
     }
 
@@ -148,6 +176,14 @@ function CreateBoxes(productsArr) {
     const content = document.querySelector(".content");
     removeAllChildNodes(content);
     productsArr.forEach((product) => createProductBoxDiv(product, content));
+
+    if(!productsArr.length){
+      const emptyDiv = document.createElement("div")
+      emptyDiv.className = "empty-div"
+      emptyDiv.textContent = "Sorry No Products At This Time"
+      content.appendChild(emptyDiv)
+      
+    }
 }
 
 const createInfoBlock = (type, ammount) => {
