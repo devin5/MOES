@@ -138,10 +138,12 @@ let Page = "Flower"
 function createNavItem(navItemsArr) {
   const header = document.querySelector(".header");
   navItemsArr.forEach((item) => {
-    const mainItemDiv = document.createElement("div");
+    const mainItemDiv = document.createElement("A");
+
 
     mainItemDiv.textContent = item.type;
     mainItemDiv.className = "menu-item";
+    mainItemDiv.href = "#content"
 
     mainItemDiv.addEventListener("click", clickHandle)
     function clickHandle(){
