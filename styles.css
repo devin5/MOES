@@ -5,12 +5,12 @@
   color: #92817a;
 }
 .logo{
-    width: 70px;
+    width: 100px;
     
 }
 .banner{
     padding: 0 20px 0 10px;
-    height: 90px;
+    height: 120px;
     display: flex;
     align-items: center;
     justify-content: space-between;
