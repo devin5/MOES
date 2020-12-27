@@ -117,6 +117,13 @@ export default function Album(props) {
           </>
         );
       }
+      if (user.currPage === "edibles" ) {
+        return (
+          <>
+            <Typography paragraph>{`1 Edible: ${props.card.price}`}</Typography>
+          </>
+        );
+      }
   }
 
   return (
