@@ -84,7 +84,7 @@ export default function Album() {
     <React.Fragment>
     <CssBaseline />
     <main>
-        <Container className={classes.cardGrid} maxWidth="md">
+        <Container className={classes.cardGrid} maxWidth="xlg">
           {/* End hero unit */}
           <Grid container spacing={4}>
             {currActiveArray().map((card, index) => (
