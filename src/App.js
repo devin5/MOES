@@ -4,6 +4,7 @@ import SignUp from "./components/SignUp"
 import Test from "./components/Test"
 import TestItems from "./components/TestItems"
 import Dashboard from "./components/Dashboard"
+import CardsTest from "./components/CardsTest"
 
 import './App.css';
 import { ThemeProvider } from "@material-ui/core";
@@ -23,6 +24,7 @@ const history = useHistory()
 const [user, setUser] = useState({})
 const [error, setErr] = useState("")
 const [open, setOpen] = useState(false)
+const [currPage, setCurrPage] = useState("flower")
 
 const pushPageHistory = (path) => {
   history.push(path)
@@ -45,11 +47,10 @@ const handleClose = () => {
 
 
   return (
-    <UserContext.Provider value={{pushPageHistory, setUserData, user, setError}}>
+    <UserContext.Provider value={{pushPageHistory, setUserData, user, setError, currPage, setCurrPage}}>
     <ThemeProvider theme={theme}>
-      {console.log("User", user)}
     <div className="App">
-
+{console.log("PAGE", currPage)}
     <Snackbar open={open} autoHideDuration={8000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="error">
           {error}
@@ -68,7 +69,7 @@ const handleClose = () => {
           routeProps => 
 
             <Dashboard>
-              <TestItems/>
+              <CardsTest/>
             </Dashboard>
 
         } />
@@ -80,6 +81,7 @@ const handleClose = () => {
     </div>
 
 
+
     </ThemeProvider>
     </UserContext.Provider>
   );
@@ -87,20 +89,3 @@ const handleClose = () => {
 
 export default App;
 
-// <div className="jumbotron">
-// <div className="container">
-//     <div className="col-md-8 offset-md-2">
-//         {alert.message &&
-//             <div className={`alert ${alert.type}`}>{alert.message}</div>
-//         }
-//         <Router history={history}>
-//             <Switch>
-//                 <PrivateRoute exact path="/" component={HomePage} />
-//                 <Route path="/login" component={LoginPage} />
-//                 <Route path="/register" component={RegisterPage} />
-//                 <Redirect from="*" to="/" />
-//             </Switch>
-//         </Router>
-//     </div>
-// </div>
-// </div>
