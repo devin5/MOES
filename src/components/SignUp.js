@@ -81,8 +81,9 @@ function registerApiCall(e){
     console.error(err)
     user.setError("Error registering try again with different credentials")
     setLoading(false)
-    
 })
+
+
 }
 
   return (
