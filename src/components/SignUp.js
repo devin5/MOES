@@ -74,7 +74,7 @@ function registerApiCall(e){
  axios.post("https://ashing-pines.herokuapp.com/auth/users/register", form)
  .then(x=> {
     user.setUserData(x.data.data.user)
-    user.pushPageHistory("/test")
+    user.pushPageHistory("/dashboard/home")
     setLoading(false)
 })
 .catch(err => {

@@ -70,7 +70,7 @@ function signInApiCall(e){
  axios.post("https://ashing-pines.herokuapp.com/auth/users/login", form)
  .then(x=> {
     user.setUserData(x.data.data.user[0])
-    user.pushPageHistory("/test")
+    user.pushPageHistory("/dashboard/home")
     setLoading(false)
 })
 .catch(err => {

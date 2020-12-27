@@ -1,12 +1,15 @@
 import React, {useState} from "react"
 import SignIn from "./components/SignIn"
 import SignUp from "./components/SignUp"
-import Banner from "./components/Banner"
+import Test from "./components/Test"
+import TestItems from "./components/TestItems"
+import Dashboard from "./components/Dashboard"
+
 import './App.css';
 import { ThemeProvider } from "@material-ui/core";
 import {theme} from "./themes/MUITheme"
 import {UserContext}from "./context/userContext"
-import {Switch, Route, Redirect, useHistory} from "react-router-dom"
+import {Route, Redirect, useHistory} from "react-router-dom"
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 
@@ -57,8 +60,18 @@ const handleClose = () => {
    
       <Route exact path="/" component={SignIn} />
       <Route path="/signup" component={SignUp} />
-      <Route path="/test" component={Banner} />
-     
+      <Route path="/test" component={Test} />
+      
+      <Route path="/dashboard/home" render={
+
+          // argument is props passed from `<Route /`>
+          routeProps => 
+
+            <Dashboard>
+              <TestItems/>
+            </Dashboard>
+
+        } />
 
   
 
