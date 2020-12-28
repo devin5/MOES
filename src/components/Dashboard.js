@@ -24,6 +24,7 @@ import Chart from './Chart';
 import Deposits from './Deposits';
 import Orders from './Orders';
 import { UserContext } from '../context/userContext';
+import {useHistory} from "react-router-dom"
 
 function Copyright() {
   return (
@@ -123,6 +124,7 @@ export default function Dashboard(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const user = React.useContext(UserContext);
+  const history = useHistory()
 
 
   const handleDrawerOpen = () => {
@@ -152,7 +154,7 @@ export default function Dashboard(props) {
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
             Ashing pines
           </Typography>
-          <IconButton color="inherit">
+          <IconButton color="inherit" onClick={()=> history.push("requests")}>
             <Badge badgeContent={user.requestLength} color="secondary">
               <NotificationsIcon />
             </Badge>
