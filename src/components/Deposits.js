@@ -23,8 +23,12 @@ export default function Deposits(props) {
     const weekSales = props.sales.filter((sale) => {
       var now = moment();
       var input = moment(sale.Sales_Date);
-      var isThisWeek = now.isoWeek() === input.isoWeek();
-      return isThisWeek;
+      var sunday = now.clone().weekday(0);
+      var saturday = now.clone().weekday(6);
+
+      var isNowWeekday = now.isBetween(sunday, saturday, null, '[]');
+      // var isThisWeek = now.isoWeek() === input.isoWeek();
+      return isNowWeekday
     });
 
     weekSales.forEach((sale) => {
@@ -38,15 +42,22 @@ export default function Deposits(props) {
     const daySales = props.sales.filter((sale) => {
       var now = moment();
       var input = moment(sale.Sales_Date);
-      var isThisDay = now.isoWeekday === input.isoWeekday;
+      
+
+      var isThisDay = now.format('MM/DD/YYYY') === input.format('MM/DD/YYYY');
       return isThisDay;
     });
+    console.log("day sales", daySales)
+    
 
     daySales.forEach((sale) => {
       salesTotal += sale.Sales;
     });
+
+   
     return salesTotal;
   }
+  
   const dayTypo = (
     <Typography color="textSecondary" className={classes.depositContext}>
       As of {moment().format("dddd, MMMM Do YYYY, h:mm:ss a")}

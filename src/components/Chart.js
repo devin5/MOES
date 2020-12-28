@@ -34,10 +34,23 @@ export default function Chart(props) {
 
     const weekSales = props.sales.filter(sale => {
         var now = moment();
-        var input = moment(sale.Sales_Date);
-        var isThisWeek = (now.isoWeek() === input.isoWeek())
-        return isThisWeek
+             var input = moment(sale.Sales_Date);
+          var sunday = now.clone().weekday(0);
+          var saturday = now.clone().weekday(6);
+          var isNowWeekday = now.isBetween(sunday, saturday, null, '[]');
+        return isNowWeekday
         
+        // let salesTotal = 0;
+        // const weekSales = props.sales.filter((sale) => {
+        //   var now = moment();
+        //   var input = moment(sale.Sales_Date);
+        //   var sunday = now.clone().weekday(0);
+        //   var saturday = now.clone().weekday(6);
+    
+        //   var isNowWeekday = now.isBetween(sunday, saturday, null, '[]');
+        //   // var isThisWeek = now.isoWeek() === input.isoWeek();
+        //   return isNowWeekday
+
     })
 
     weekSales.forEach(sale => { 
