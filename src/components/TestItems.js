@@ -138,7 +138,7 @@ axios.get("https://ashing-pines.herokuapp.com/rewards/sales")
             {/* Recent Orders */}
             <Grid item xs={12}>
               <Paper className={classes.paper}>
-                <Orders />
+                <Orders sales={sales}/>
               </Paper>
             </Grid>
           </Grid>
