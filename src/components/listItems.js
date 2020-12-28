@@ -1,6 +1,9 @@
 import React, {useContext} from 'react';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
+import StarRate from '@material-ui/icons/StarRate';
+import BarChart from '@material-ui/icons/BarChart';
+import {useHistory} from "react-router-dom"
 import ListItemText from '@material-ui/core/ListItemText';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import AssignmentIcon from '@material-ui/icons/Assignment';
@@ -12,9 +15,11 @@ import CakeIcon from '@material-ui/icons/Cake';
 import SignalCellularConnectedNoInternet4BarIcon from '@material-ui/icons/SignalCellularConnectedNoInternet4Bar';
 export const MainListItems = () => {
     const user = useContext(UserContext);
-
+    const history = useHistory()
     function handleClick(page){
         user.setCurrPage(page)
+        history.push("/dashboard/home")
+
     }
 
     return(
@@ -57,25 +62,31 @@ export const MainListItems = () => {
 
 export const SecondaryListItems = () => {
     const user = useContext(UserContext);
+    const history = useHistory()
+
+    function handleClick(page){
+        history.push(page)
+    }
+
     return(  <div>
-        <ListSubheader inset>Saved reports</ListSubheader>
-        <ListItem button>
+        <ListSubheader inset>Actions</ListSubheader>
+        <ListItem button onClick={() => handleClick("requests")}>
           <ListItemIcon>
             <AssignmentIcon />
           </ListItemIcon>
-          <ListItemText primary="Current month" />
+          <ListItemText primary="Requests" />
         </ListItem>
-        <ListItem button>
+        <ListItem button onClick={() => handleClick("rewards")}>
           <ListItemIcon>
-            <AssignmentIcon />
+            <StarRate />
           </ListItemIcon>
-          <ListItemText primary="Last quarter" />
+          <ListItemText primary="Rewards" />
         </ListItem>
-        <ListItem button>
+        <ListItem button onClick={() => handleClick("analysis")}>
           <ListItemIcon>
-            <AssignmentIcon />
+            <BarChart />
           </ListItemIcon>
-          <ListItemText primary="Year-end sale" />
+          <ListItemText primary="Analysis" />
         </ListItem>
       </div>)
 

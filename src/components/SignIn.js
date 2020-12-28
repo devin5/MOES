@@ -62,7 +62,7 @@ export default function SignIn() {
 
   function handleChange(event) {
     setForm({...form, [event.target.name]: event.target.value});
-    console.log(form)
+   
   }
 
 function signInApiCall(e){

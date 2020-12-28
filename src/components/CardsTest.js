@@ -11,7 +11,7 @@ import {edibles} from "../data/edibles"
 import ItemCard from "./ItemCard"
 import { UserContext } from '../context/userContext';
 import Typography from "@material-ui/core/Typography";
-
+import Copyright from "./Copyright";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -47,6 +47,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(6),
   },
+  
 }));
 
 
@@ -96,6 +97,9 @@ export default function Album() {
           {currActiveArray().length ? null : typeographyDisplay}
          
         </Container>
+      
+       
+
         </main>
         </React.Fragment>
   

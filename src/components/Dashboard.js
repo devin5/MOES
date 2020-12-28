@@ -23,6 +23,7 @@ import { MainListItems, SecondaryListItems } from './listItems';
 import Chart from './Chart';
 import Deposits from './Deposits';
 import Orders from './Orders';
+import { UserContext } from '../context/userContext';
 
 function Copyright() {
   return (
@@ -121,6 +122,9 @@ const useStyles = makeStyles((theme) => ({
 export default function Dashboard(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+  const user = React.useContext(UserContext);
+
+
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -149,7 +153,7 @@ export default function Dashboard(props) {
             Ashing pines
           </Typography>
           <IconButton color="inherit">
-            <Badge badgeContent={4} color="secondary">
+            <Badge badgeContent={user.requestLength} color="secondary">
               <NotificationsIcon />
             </Badge>
           </IconButton>

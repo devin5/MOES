@@ -65,7 +65,7 @@ export default function SignUp() {
 
   function handleChange(event) {
     setForm({...form, [event.target.name]: event.target.value});
-    console.log(form)
+  
   }
 
 function registerApiCall(e){
