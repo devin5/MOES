@@ -57,13 +57,22 @@ export default function RequestLayout() {
   const [loading, setLoading] = React.useState([]);
   const [redraw, setRedraw] = React.useState(false);
   const user = useContext(UserContext);
-
+  
   useEffect(() => {
     setLoading(true);
     axios
       .get("https://ashing-pines.herokuapp.com/rewards/rewards")
+   
       .then((x) => {
-        setRewards(x.data.data);
+        let dataPoint = x.data.data
+        if(!user.user.User_Is_Admin){
+          console.log(" I ran")
+          
+          dataPoint = x.data.data.filter(data =>{
+            return data.User_ID === user.user.User_ID
+          })
+        }
+        setRewards(dataPoint);
         setLoading(false);
       })
       .catch((err) => {

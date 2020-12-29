@@ -127,6 +127,8 @@ export default function Dashboard(props) {
 
   const user = React.useContext(UserContext);
   const history = useHistory()
+  const Url = user.user.User_Is_Admin ? "https://ashing-pines.herokuapp.com/rewards/rewards" : `https://ashing-pines.herokuapp.com/rewards/${user.user.User_ID}/rewards`
+
 
 
   const handleDrawerOpen = () => {
@@ -137,7 +139,7 @@ export default function Dashboard(props) {
   };
 
   useEffect(() => {
-    axios.get(`https://ashing-pines.herokuapp.com/rewards/${user.user.User_ID}/rewards`)
+    axios.get(Url)
     .then((x) => {
     
       setUserLength(x.data.data.length);
