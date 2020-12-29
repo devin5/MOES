@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -8,6 +8,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Title from './Title';
 import moment from "moment"
+import {UserContext} from "../context/userContext"
+
 // Generate Order Data
 function createData(id, date, name, shipTo, paymentMethod, amount) {
   return { id, date, name, shipTo, paymentMethod, amount };
@@ -33,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Orders(props) {
   const classes = useStyles();
-
+  const user = useContext(UserContext);
   function createData(id, date, name, amount) {
     return { id, date, name, amount };
   }
@@ -42,11 +44,29 @@ export default function Orders(props) {
     
   ];
 
-  props.sales.slice(Math.max(props.sales.length - 50, 1)).reverse().forEach((sale, index) => {
-    const newDate = moment(sale.Sales_Date).format("dddd, MMMM Do YYYY, h:mm:ss a")
+  if(!user.user.User_Is_Admin){
+      const sales = props.sales.filter(item => {
+      return item.User_Name === user.user.User_Name
+    })
 
-      rows.push(createData(index, newDate, sale.User_Name, sale.Sales))
-  })
+    console.log("heerre", sales)
+
+    sales.slice(Math.max(sales.length - 50, 1)).reverse().forEach((sale, index) => {
+      const newDate = moment(sale.Sales_Date).format("dddd, MMMM Do YYYY, h:mm:ss a")
+  
+        rows.push(createData(index, newDate, sale.User_Name, sale.Sales))
+    })
+  }
+  else{
+    props.sales.slice(Math.max(props.sales.length - 50, 1)).reverse().forEach((sale, index) => {
+      const newDate = moment(sale.Sales_Date).format("dddd, MMMM Do YYYY, h:mm:ss a")
+  
+        rows.push(createData(index, newDate, sale.User_Name, sale.Sales))
+    })
+  }
+ 
+
+ 
 
   return (
     <React.Fragment>

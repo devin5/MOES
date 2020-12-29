@@ -15,7 +15,9 @@ import Request from "./Request";
 import axios from "axios";
 import LinearProgress from "@material-ui/core/LinearProgress";
 
+import AddRequest from "./AddRequest"
 import { CenterFocusStrong } from "@material-ui/icons";
+
 const useStyles = makeStyles((theme) => ({
   icon: {
     marginRight: theme.spacing(2),
@@ -71,6 +73,14 @@ export default function RequestLayout() {
     axios
       .get("https://ashing-pines.herokuapp.com/rewards/")
       .then((x) => {
+
+        if(user.user.User_Is_Admin !== true){
+          x.data.data = x.data.data.filter(request => {
+            return request.User_ID === user.user.User_ID
+          })
+        }
+
+
         setRewards(x.data.data);
         user.setRequestLength(x.data.data.length)
         setLoading(false);
@@ -82,23 +92,31 @@ export default function RequestLayout() {
   }, [redraw]);
 
   return (
-     
-    <Grid container spacing={6} className={classes.cardGrid}>
-      {loading && (
-        <div className={classes.root}>
-          <LinearProgress color="secondary" />
-          <LinearProgress color="secondary" />
-          <LinearProgress color="primary" />
-          <LinearProgress color="secondary" />
-        </div>
-      )}
-      {rewards.map((card, index) => (
-        <Grid item key={index} xs={12} sm={6} md={4}>
-          <Request redraw={setRedraw} card={card} />
-        </Grid>
-      ))}
-      
-    </Grid>
+    <>
+    {user.user.User_Is_Admin ? 
+       <Grid container spacing={6} className={classes.cardGrid}>
+    
+       {loading && (
+         <div className={classes.root}>
+           <LinearProgress color="secondary" />
+           <LinearProgress color="secondary" />
+           <LinearProgress color="primary" />
+           <LinearProgress color="secondary" />
+         </div>
+       )}
+       {rewards.map((card, index) => (
+         <Grid item key={index} xs={12} sm={6} md={4}>
+           <Request redraw={setRedraw} card={card} />
+         </Grid>
+       ))}
+       
+     </Grid> :
+    < AddRequest />
+     }
+    
+ 
+    </>
+    
     
   );
 }

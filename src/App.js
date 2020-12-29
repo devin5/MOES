@@ -2,6 +2,8 @@ import React, {useState, useEffect} from "react"
 import SignIn from "./components/SignIn"
 import SignUp from "./components/SignUp"
 import TestItems from "./components/TestItems"
+import UserTestItems from "./components/UserTestItems"
+
 import Dashboard from "./components/Dashboard"
 import Rewards from "./components/Rewards"
 import Analysis from "./components/Analysis"
@@ -16,6 +18,8 @@ import {Route, Redirect, useHistory} from "react-router-dom"
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import axios from "axios"
+import { SettingsCellRounded } from "@material-ui/icons"
+
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
@@ -65,6 +69,7 @@ const closeAlertHandler = (str) =>{
     axios
       .get("https://ashing-pines.herokuapp.com/rewards/")
       .then((x) => {
+
         setRequestLength(x.data.data.length);
        
       })
@@ -72,6 +77,8 @@ const closeAlertHandler = (str) =>{
         console.error(err);
        
       });
+
+  
   }, [triggerCount]);
 
 
@@ -111,7 +118,7 @@ const closeAlertHandler = (str) =>{
             </Dashboard>
 
         } />
-
+{console.log("user",user)}
 <Route path="/dashboard/requests" render={
 
 // argument is props passed from `<Route /`>
@@ -119,7 +126,7 @@ routeProps =>
 
   <Dashboard>
     <RequestLayout/>
-   
+    
   </Dashboard>
 
 } />
@@ -141,6 +148,16 @@ routeProps =>
 
   <Dashboard>
     <TestItems/>
+  </Dashboard>
+
+} />
+<Route path="/dashboard/useranalyze" render={
+
+// argument is props passed from `<Route /`>
+routeProps => 
+
+  <Dashboard>
+    <UserTestItems/>
   </Dashboard>
 
 } />

@@ -1,10 +1,11 @@
-import React from "react";
+import React, {useContext, useEffect} from "react";
 import Link from "@material-ui/core/Link";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Title from "./Title";
 import moment from "moment";
-
+import axios from "axios"
+import {UserContext} from "../context/userContext"
 function preventDefault(event) {
   event.preventDefault();
 }
@@ -17,6 +18,9 @@ const useStyles = makeStyles({
 
 export default function Deposits(props) {
   const classes = useStyles();
+  const user = useContext(UserContext)
+  const [score, SetScore] = React.useState(0)
+
 
   function getWeekSales() {
     let salesTotal = 0;
@@ -58,6 +62,20 @@ export default function Deposits(props) {
     return salesTotal;
   }
   
+useEffect(() => {
+  axios
+.get(`https://ashing-pines.herokuapp.com/rewards/${user.user.User_ID}/score`)
+.then((x) => {
+  SetScore(x.data.data)
+ 
+})
+.catch((err) => {
+  console.error(err);
+ 
+});
+},[])
+  
+  
   const dayTypo = (
     <Typography color="textSecondary" className={classes.depositContext}>
       As of {moment().format("dddd, MMMM Do YYYY, h:mm:ss a")}
@@ -80,7 +98,8 @@ console.log(from_date)
   getWeekSales();
   return (
     <React.Fragment>
-      <Title>
+      {user.user.User_Is_Admin ? <>
+        <Title>
         {props.type === "week" ? "This Week's Sales" : "Todays Sales"}
       </Title>
       <Typography component="p" variant="h4">
@@ -97,6 +116,28 @@ console.log(from_date)
           View balance
         </Link>
       </div>
+      </> : 
+      <>
+      <Title>
+      This Months Purchases
+    </Title>
+    <Typography component="p" variant="h4">
+      {score}
+    </Typography>
+    {/* <Typography color="textSecondary" className={classes.depositContext}>
+      As of {moment().format("dddd, MMMM Do YYYY, h:mm:ss a")}
+    </Typography> */}
+    {props.type === "week" ? weekTypo : dayTypo}
+
+
+    <div>
+      <Link color="primary" href="#" onClick={preventDefault}>
+        View balance
+      </Link>
+    </div>
+    </> 
+      }
+
     </React.Fragment>
   );
 }

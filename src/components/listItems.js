@@ -82,12 +82,23 @@ export const SecondaryListItems = () => {
           </ListItemIcon>
           <ListItemText primary="Rewards" />
         </ListItem>
+        {
+          user.user.User_Is_Admin ? 
         <ListItem button onClick={() => handleClick("analysis")}>
+          
           <ListItemIcon>
             <BarChart />
           </ListItemIcon>
           <ListItemText primary="Analysis" />
         </ListItem>
+        : 
+        <ListItem button onClick={() => handleClick("useranalyze")}>
+        <ListItemIcon>
+        <BarChart />
+      </ListItemIcon>
+      <ListItemText primary="Analysis" />
+    </ListItem>
+}
       </div>)
 
 }

@@ -17,6 +17,7 @@ import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import {UserContext} from "../context/userContext"
+
 import axios from "axios"
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -81,6 +82,7 @@ export default function Request(props) {
   }
 
   return (
+
       
     <Card className={classes.root}>
         {console.log("props", props)}
@@ -92,6 +94,7 @@ export default function Request(props) {
           </Avatar>
         }
         action={
+          user.user.User_Is_Admin ? 
             <>
           <IconButton aria-label="Confirm" onClick={acceptRequest}>
           <Check />
@@ -100,16 +103,13 @@ export default function Request(props) {
           <Close />
           </IconButton>
           </>
+          :
+          null
         }
-       
-
-
-        title={`${props.card.User_Name} Spent ${props.card.Request_Ammount}`}
+       title={`${props.card.User_Name} Spent ${props.card.Request_Ammount}`}
         subheader={`${da}-${mo}-${ye}`}
       />
  
-
-     
     </Card>
   );
 }

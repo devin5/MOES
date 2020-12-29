@@ -1,5 +1,5 @@
   
-import React from 'react';
+import React, { useEffect } from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -25,7 +25,7 @@ import Deposits from './Deposits';
 import Orders from './Orders';
 import { UserContext } from '../context/userContext';
 import {useHistory} from "react-router-dom"
-
+import axios from "axios"
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -123,6 +123,8 @@ const useStyles = makeStyles((theme) => ({
 export default function Dashboard(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+  const [userLength, setUserLength] = React.useState(false);
+
   const user = React.useContext(UserContext);
   const history = useHistory()
 
@@ -134,6 +136,20 @@ export default function Dashboard(props) {
     setOpen(false);
   };
 
+  useEffect(() => {
+    axios.get(`https://ashing-pines.herokuapp.com/rewards/${user.user.User_ID}/rewards`)
+    .then((x) => {
+    
+      setUserLength(x.data.data.length);
+     
+    })
+    .catch((err) => {
+      console.error(err);
+     
+    });
+  })
+
+  
   //?
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
@@ -155,7 +171,7 @@ export default function Dashboard(props) {
             Ashing pines
           </Typography>
           <IconButton color="inherit" onClick={()=> history.push("requests")}>
-            <Badge badgeContent={user.requestLength} color="secondary">
+            <Badge badgeContent={user.user.User_Is_Admin ? user.requestLength : userLength} color="secondary">
               <NotificationsIcon />
             </Badge>
           </IconButton>

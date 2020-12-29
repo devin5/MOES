@@ -65,11 +65,14 @@ export default function Request(props) {
           </Avatar>
         }
         action={
+          user.user.User_Is_Admin ?
             <>
           <IconButton aria-label="Confirm" onClick={acceptReward}>
           <Check />
           </IconButton>
           </>
+          :
+          null
         }
        
 
