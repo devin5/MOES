@@ -170,7 +170,7 @@ export default function Dashboard(props) {
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
             Ashing pines
           </Typography>
-          <IconButton color="inherit" onClick={()=> history.push("requests")}>
+          <IconButton color="inherit" onClick={()=> history.push(user.user.User_Is_Admin ? "requests" : "rewards")}>
             <Badge badgeContent={user.user.User_Is_Admin ? user.requestLength : userLength} color="secondary">
               <NotificationsIcon />
             </Badge>
