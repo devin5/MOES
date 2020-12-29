@@ -49,9 +49,11 @@ export default function Orders(props) {
       return item.User_Name === user.user.User_Name
     })
 
+    console.log("sales", sales)
+
     console.log("heerre", sales)
 
-    sales.slice(Math.max(sales.length - 50, 1)).reverse().forEach((sale, index) => {
+    sales.slice(Math.max(sales.length - 50, 0)).reverse().forEach((sale, index) => {
       const newDate = moment(sale.Sales_Date).format("dddd, MMMM Do YYYY, h:mm:ss a")
   
         rows.push(createData(index, newDate, sale.User_Name, sale.Sales))
