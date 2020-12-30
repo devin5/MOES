@@ -4,6 +4,7 @@ import cherry from "../image/cherry.jpg"
 import thai from "../image/thai.jpg"
 import poison from "../image/po.jpg"
 import purple from "../image/purple.jpg"
+import og from "../image/og.jpg"
 
 
 export const flowers = [
@@ -20,6 +21,20 @@ export const flowers = [
     //   cbd: "23%",
     //   desc:"Bubba Kush is an indica strain that has gained notoriety in the US and beyond for its heavy tranquilizing effects. Sweet hashish flavors with subtle notes of chocolate and coffee come through on the exhale, delighting the palate as powerful relaxation takes over. "
     // },
+    {
+      type: "OG Kush",
+      strain: "Hybrid",
+      sativa: "50%",
+      indica: "50%",
+      src: og,
+      eigth: "$50.00",
+      oz: "$280.00",
+      // gram:
+      thc: "19%",
+      cbd: "11%",
+      desc: "OG Kush was first cultivated in Florida, in the early ‘90s when a strain from Northern California was crossed with a Hindu Kush plant from Amsterdam. The result was a hybrid with a unique terpene profile that boasts a complex aroma with notes of fuel, skunk, and spice. "
+
+    },
         {
       type: "Durbon Poison",
       strain: "Sativa",
