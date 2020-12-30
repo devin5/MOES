@@ -2,20 +2,49 @@ import patnum from "../image/patnum.jpg"
 import girl from "../image/vvv.jpg"
 import cherry from "../image/cherry.jpg"
 import thai from "../image/thai.jpg"
+import poison from "../image/po.jpg"
+import purple from "../image/purple.jpg"
+
 
 export const flowers = [
-    {
-      type: "Platinum Bubba",
-      strain: "Indica",
-      sativa: "20%",
-      indica: "80%",
-      src: patnum,
+    // {
+    //   type: "Platinum Bubba",
+    //   strain: "Indica",
+    //   sativa: "20%",
+    //   indica: "80%",
+    //   src: patnum,
+    //   eigth: "$35.00",
+    //   oz: "$240.00",
+    //   // gram:
+    //   thc: "17%",
+    //   cbd: "23%",
+    //   desc:"Bubba Kush is an indica strain that has gained notoriety in the US and beyond for its heavy tranquilizing effects. Sweet hashish flavors with subtle notes of chocolate and coffee come through on the exhale, delighting the palate as powerful relaxation takes over. "
+    // },
+        {
+      type: "Durbon Poison",
+      strain: "Sativa",
+      sativa: "100%",
+      indica: "0%",
+      src: poison,
       eigth: "$35.00",
       oz: "$240.00",
       // gram:
       thc: "17%",
-      cbd: "23%",
-      desc:"Bubba Kush is an indica strain that has gained notoriety in the US and beyond for its heavy tranquilizing effects. Sweet hashish flavors with subtle notes of chocolate and coffee come through on the exhale, delighting the palate as powerful relaxation takes over. "
+      cbd: "5%",
+      desc:"This pure sativa originates from the South African port city of Durban. It has gained popularity worldwide for its sweet smell and energetic, uplifting effects. Durban Poison is the perfect strain to help you stay productive through a busy day, when exploring the outdoors, or to lend a spark of creativity."
+    },
+    {
+      type: "Purple Punch",
+      strain: "Indica",
+      sativa: "20%",
+      indica: "80%",
+      src: purple,
+      eigth: "$35.00",
+      oz: "$240.00",
+      // gram:
+      thc: "19%",
+      cbd: "27%",
+      desc:"Purple Punch is the sweet and sedating union of two indica-dominant classics. By breeding Larry OG with Granddaddy Purple, the astonishing trichome laden Purple Punch was born, smelling of grape candy, blueberry muffins, and tart Kool-Aid. The potency of this strain gives the consumer a one-two punch to the head and body, initially landing between the eyes and settling down into the limbs."
     },
     {
       type: "Girl Scout Cookies",
